@@ -58,7 +58,9 @@ $(document).ready( function() {
 	    color = $("#colorPicker").val(); //default color
 		event.preventDefault();
 		//console.log("READ DATA h: "+h+" w: "+w+" color: "+color);
-
+		let t0 = performance.now()
 		makeGrid(h,w,id);
+		let t1 = performance.now()
+		console.log('Exec time (ms): ', t1 - t0)
 	});
 });
