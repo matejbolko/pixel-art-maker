@@ -8,14 +8,17 @@ let h;
 let w;
 let color;
 
-function makeGrid(x,y,canvas) {
+function makeGrid(x,y) {
+	let fragment = document.createDocumentFragment();
 	for (var i=0; i<x; i++){
-		$(canvas).append('<tr></tr>');
+		var tr = document.createElement("tr");
+		fragment.appendChild(tr);
 		for (var j=0; j<y; j++){
-			$("tr:last").append("<td></td>");
+			var td = document.createElement("td");
+			tr.appendChild(td);
 		}
 	}
-// Your code goes here!
+	return fragment;
 }
 
 $("#pixelCanvas").on("click", "td", function() {
@@ -52,14 +55,14 @@ function rgb2hex(rgb){
 $(document).ready( function() {
     console.log( "ready!" );
     $("#sizePicker").submit(function(event) {
+    	let t0 = performance.now()
 	    $(id).empty();
 	    h = $("#inputHeight").val();
 	    w = $("#inputWeight").val();
+	    let grid = makeGrid(h,w);
+	    id.appendChild(grid);
 	    color = $("#colorPicker").val(); //default color
 		event.preventDefault();
-		//console.log("READ DATA h: "+h+" w: "+w+" color: "+color);
-		let t0 = performance.now()
-		makeGrid(h,w,id);
 		let t1 = performance.now()
 		console.log('Exec time (ms): ', t1 - t0)
 	});
