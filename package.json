@@ -1,0 +1,23 @@
+{
+  "name": "pixel-art-maker",
+  "version": "1.0.0",
+  "description": "## Table of Contents",
+  "main": "designs.js",
+  "devDependencies": {
+    "standard": "^11.0.0"
+  },
+  "scripts": {
+    "test": "standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matejbolko/pixel-art-maker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matejbolko/pixel-art-maker/issues"
+  },
+  "homepage": "https://github.com/matejbolko/pixel-art-maker#readme"
+}
