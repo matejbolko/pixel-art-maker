@@ -3,19 +3,23 @@
 
 // When size is submitted by the user, call makeGrid()
 const id = document.getElementById('pixelCanvas')
-const whiteColor = '#ffffff'
+const whiteColor = '#fff'
 let h
 let w
 let color
 const $ = window.$
 
-function makeGrid (x, y, canvas) {
+function makeGrid (x, y) {
+  let fragment = document.createDocumentFragment()
   for (var i = 0; i < x; i++) {
-    $(canvas).append('<tr></tr>')
+    var tr = document.createElement('tr')
+    fragment.appendChild(tr)
     for (var j = 0; j < y; j++) {
-      $('tr:last').append('<td></td>')
+      var td = document.createElement('td')
+      tr.appendChild(td)
     }
   }
+  return fragment
 }
 
 $('#pixelCanvas').on('click', 'td', function (event) {
@@ -49,14 +53,18 @@ function rgb2hex (rgb) {
 }
 
 $(document).ready(function () {
-  console.log('ready!')
+  // console.log('ready!')
   $('#sizePicker').submit(function (event) {
+    let t0 = window.performance.now()
     $(id).empty()
     h = $('#inputHeight').val()
     w = $('#inputWeight').val()
+    let grid = makeGrid(h, w)
+    id.appendChild(grid)
     color = $('#colorPicker').val() // default color
     event.preventDefault()
     // console.log('READ DATA h: '+h+' w: '+w+' color: '+color);
-    makeGrid(h, w, id)
+    let t1 = window.performance.now()
+    console.log('Exec time (ms): ', t1 - t0)
   })
 })

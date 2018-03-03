@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/matejbolko/pixel-art-maker/issues"
   },
-  "homepage": "https://github.com/matejbolko/pixel-art-maker#readme"
+  "homepage": "https://github.com/matejbolko/pixel-art-maker#readme",
+  "dependencies": {
+    "npm": "^5.7.1"
+  }
 }
